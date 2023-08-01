@@ -13,4 +13,5 @@ Status editStudentGrade();
 Status searchStudent();
 Status printTopNStudentsPerCourse();
 Status printUnderperformedStudents();
+Status printAverage();
 #endif
