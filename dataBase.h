@@ -20,8 +20,8 @@ void add(int level, int sClass, Student* student);
 StudentNode* search2DeleteByPhone(unsigned int phone, BOOL *isLast);
 StudentNode* searchByPhone(unsigned int phone);
 StudentNode* searchByName(char* fName, char* lName, int* level, int* sClass);
-void freeStudent(StudentNode* student2delete);
-void findTopN(StudentNode** arr, int n, int coureNum);
-void getStudentUnderGrade(int minGrade, StudentNode* container);
+void freeStudent(StudentNode* student2delete, BOOL all);
+void findTopN(StudentNode** arr, int n, int level, int courseNum);
+void getStudentUnderGrade(int minGrade, StudentNode** container);
 double calcLevelAverage(int level, int course);
 #endif
