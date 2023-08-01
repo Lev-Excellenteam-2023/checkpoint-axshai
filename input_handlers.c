@@ -242,3 +242,8 @@ Status exportDatabase()
 
     fclose(outputFile);
 }
+Status printAllStudents()
+{
+    printDataBase(stdout);
+    return Success;
+}
