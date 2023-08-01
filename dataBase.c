@@ -188,7 +188,7 @@ StudentNode* search2DeleteByPhone(unsigned int phone, BOOL *isLast)
             {
                 *isLast = FALSE;
                 StudentNode* temp = g_schooldDataBase[sLevel][sClass];
-                g_schooldDataBase[sLevel][sClass] = NULL;
+                g_schooldDataBase[sLevel][sClass] = g_schooldDataBase[sLevel][sClass]->next;
                 return temp;
             }
             StudentNode* head = g_schooldDataBase[sLevel][sClass];
