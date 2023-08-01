@@ -166,3 +166,25 @@ Status searchStudent()
     }
 
 }
+Status printTopNStudentsPerCourse()
+{
+    StudentNode** topn;
+    int n;
+    int coureNum;
+    printf("please enter n\n");
+    scanf("%d", &n);
+    printf("please enter the course num (1 - 10)\n");
+    scanf("%d", &coureNum);
+    for (int sLevel = 0; sLevel < NUM_OF_LEVELS; sLevel++)
+    {
+        topn = (StudentNode**)calloc(n, sizeof(StudentNode*));
+        findTopN(topn, n, sLevel, coureNum - 1);
+        printf("The top %d students in level %d are :\n", n, sLevel + 1);
+        for (int i = 0; i < n && topn[i] != NULL; i++)
+        {
+            
+            printStudent(topn[i]->student, stdout);
+        }
+        free(topn);
+    }
+}

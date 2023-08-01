@@ -11,4 +11,5 @@ Status insertNewStudent();
 Status deleteStudent();
 Status editStudentGrade();
 Status searchStudent();
+Status printTopNStudentsPerCourse();
 #endif
