@@ -3,9 +3,10 @@
 /.vs/CheckPoint/FileContentIndex/read.lock
 /.vs/CheckPoint/v17/Browse.VC.db
 /.vs/CheckPoint/v17/Browse.VC.db-shm
-/.vs/CheckPoint/v17/Browse.VC.db-wal
+/.vs/
 /.vs/CheckPoint/v17/Browse.VC.opendb
 /CheckPoint.sln
 /CheckPoint.vcxproj
 /CheckPoint.vcxproj.filters
 /CheckPoint.vcxproj.user
+/X64
