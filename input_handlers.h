@@ -14,4 +14,5 @@ Status searchStudent();
 Status printTopNStudentsPerCourse();
 Status printUnderperformedStudents();
 Status printAverage();
+Status exportDatabase();
 #endif

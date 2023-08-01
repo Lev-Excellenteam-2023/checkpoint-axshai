@@ -229,3 +229,16 @@ Status printAverage()
         }
     }
 }
+
+Status exportDatabase()
+{
+    FILE* outputFile = fopen("students_db.txt", "w");
+    if (outputFile == NULL) {
+        printf("Error opening the output file.\n");
+        return Fail;
+    }
+
+    printDataBase(outputFile);
+
+    fclose(outputFile);
+}
