@@ -188,3 +188,44 @@ Status printTopNStudentsPerCourse()
         free(topn);
     }
 }
+
+Status printUnderperformedStudents()
+{
+    StudentNode* studentList = NULL;
+    getStudentUnderGrade(MIN_GRADE_2_STAY, &studentList);
+    
+    StudentNode* current = studentList;
+    if (current == NULL)
+    {
+        printf("The are not under Performed Students.\n");
+    }
+    else
+        printf("The under Performed Students are:\n");
+    while (current != NULL)
+    {
+        printStudent(current->student, stdout);
+        current = current->next;
+    }
+
+    while (studentList != NULL) {
+        StudentNode* student2delete = studentList;
+        studentList = studentList->next;
+        freeStudent(student2delete);
+
+    }
+    return Success;
+}
+
+Status printAverage()
+{
+
+    for (int sLevel = 0; sLevel < NUM_OF_LEVELS; sLevel++)
+    {
+        printf("Average of level %d:\n", sLevel + 1);
+        for (int course = 0; course < NUM_OF_GRADES; course++)
+        {
+            printf("Course %d: %f\n", course + 1, calcLevelAverage(sLevel, course));
+            
+        }
+    }
+}
