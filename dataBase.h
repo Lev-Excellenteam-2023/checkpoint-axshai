@@ -16,7 +16,7 @@ typedef struct studentNode {
 
 //extern StudentNode* g_schooldDataBase[NUM_OF_LEVELS][NUM_OF_CLASSES];
 void initDataBase(FILE* file);
-void push(StudentNode * *head, Student * newStudent);
 void printDataBase();
 void clearDataBase();
+void add(int level, int sClass, Student* student);
 #endif

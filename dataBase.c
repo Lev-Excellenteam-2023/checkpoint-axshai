@@ -1,4 +1,5 @@
 #include "dataBase.h"
+#include "input_handlers.h"
 #include "school.h"
 #include <stddef.h>
 #include <stdlib.h>
@@ -7,43 +8,18 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define MAX_LINE_LENGTH 150
 StudentNode* g_schooldDataBase[NUM_OF_LEVELS][NUM_OF_CLASSES];
-static Student* _parseLine(char* line, int* sClass, int* level)
+
+static void _push(StudentNode** head, Student* newStudent)
 {
-    char* token;
-    if (line[strlen(line) - 1] == '\n') {
-        line[strlen(line) - 1] = '\0';
-    }
+    StudentNode* newNode;
+    newNode = (StudentNode*)malloc(sizeof(StudentNode));
 
-    Student* newStudent = (Student*)malloc(sizeof(Student));
-    if (!newStudent) {
-        return NULL;
-    }
-    newStudent->firstName = (char*)malloc(sizeof(Student));
-    token = strtok(line, " ");
-    strncpy(newStudent->firstName, token, sizeof(token) - 1);
-    newStudent->firstName[sizeof(newStudent->firstName) - 1] = '\0';
+    newNode->student = newStudent;
+    newNode->next = *head;
+    *head = newNode;
 
-    newStudent->lastName = (char*)malloc(sizeof(Student));
-    token = strtok(NULL, " ");
-    strncpy(newStudent->lastName, token, sizeof(token) - 1);
-    newStudent->lastName[sizeof(newStudent->lastName) - 1] = '\0';
-
-    token = strtok(NULL, " ");
-    newStudent->phone = atoi(token);
-
-    token = strtok(NULL, " ");
-    *level = atoi(token);
-    
-    token = strtok(NULL, " ");
-    *sClass = atoi(token);
-
-
-    for (int i = 0; i < NUM_OF_GRADES; i++) {
-        token = strtok(NULL, " ");
-        newStudent->grades[i] = atoi(token);
-    }
-    return newStudent;
 }
+
 
 static void _printStudent(Student* student)
 {
@@ -74,24 +50,18 @@ void initDataBase(FILE* file)
 
   
     while (fgets(line, MAX_LINE_LENGTH, file)) {
-        student = _parseLine(line, &sClass, &level);
+        student = parseLine(line, &sClass, &level);
         if (student != NULL) 
         {
-            push(&g_schooldDataBase[level -1][sClass - 1], student);
+            add(level, sClass, student);
         }
     }
 
 }
 
-void push(StudentNode** head, Student* newStudent) 
+void add(int level, int sClass, Student* student)
 {
-	StudentNode* newNode;
-	newNode = (StudentNode*)malloc(sizeof(StudentNode));
-
-	newNode->student = newStudent;
-	newNode->next = *head;
-	*head = newNode;
-
+    _push(&g_schooldDataBase[level - 1][sClass - 1], student);
 }
 
 void printDataBase()
