@@ -166,6 +166,7 @@ Status searchStudent()
     }
 
 }
+
 Status printTopNStudentsPerCourse()
 {
     StudentNode** topn;
@@ -242,8 +243,19 @@ Status exportDatabase()
 
     fclose(outputFile);
 }
+
 Status printAllStudents()
 {
     printDataBase(stdout);
     return Success;
 }
+
+Status handleClosing()
+{
+    clearDataBase();
+    return Success;
+
+}
+
+
+

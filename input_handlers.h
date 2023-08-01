@@ -16,4 +16,5 @@ Status printUnderperformedStudents();
 Status printAverage();
 Status exportDatabase();
 Status printAllStudents();
+Status handleClosing();
 #endif
