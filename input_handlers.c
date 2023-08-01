@@ -106,3 +106,28 @@ Status deleteStudent()
         return Fail;
     }
 }
+Status editStudentGrade()
+{
+    unsigned int phone;
+    int courseNum;
+    int newGrade;
+    printf("enter the phone of the student you want to edit\n");
+    scanf("%u", &phone);
+
+    StudentNode* student2Edit = searchByPhone(phone);
+    printf("enter the number of the course you want to edit (1 - 10)\n");
+    scanf("%d", &courseNum);
+    printf("enter the new grade\n");
+    scanf("%d", &newGrade);
+    if (student2Edit)
+    {
+        student2Edit->student->grades[courseNum - 1] = newGrade;
+        return Success;
+    }
+    else
+    {
+        printf("there is no student with phone number: 0%u\n", phone);
+        return Fail;
+    }
+}
+

@@ -9,4 +9,5 @@ typedef enum Status_E { Success , Fail} Status;
 Student* parseLine(char* line, int* sClass, int* level);
 Status insertNewStudent();
 Status deleteStudent();
+Status editStudentGrade();
 #endif
