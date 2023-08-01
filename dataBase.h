@@ -19,4 +19,5 @@ void initDataBase(FILE* file);
 void printDataBase();
 void clearDataBase();
 void add(int level, int sClass, Student* student);
+void freeStudent(StudentNode* student2delete);
 #endif

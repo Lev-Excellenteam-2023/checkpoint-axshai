@@ -77,6 +77,17 @@ void printDataBase()
         }
     }
 }
+ 
+void freeStudent(StudentNode* student2delete)
+{
+    StudentNode* temp = student2delete;
+    student2delete = student2delete->next;
+    free(temp->student->firstName);
+    free(temp->student->lastName);
+    free(temp->student);
+    free(temp);
+
+}
 
 void clearDataBase()
 {
@@ -87,14 +98,12 @@ void clearDataBase()
         {
             StudentNode* current = g_schooldDataBase[sLevel][sClass];
             while (current != NULL) {
-                StudentNode* temp = current;
+                StudentNode* student2delete = current;
                 current = current->next;
-                free(temp->student->firstName);
-                free(temp->student->lastName);
-                free(temp->student);
-                free(temp);
+                freeStudent(student2delete);
 
             }
         }
     }
 }
+
