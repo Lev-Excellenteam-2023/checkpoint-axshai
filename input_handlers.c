@@ -131,3 +131,38 @@ Status editStudentGrade()
     }
 }
 
+Status searchStudent()
+{
+    int level, sClass;
+    char name[MAX_FNAME_LENGTH + MAX_LNAME_LENGTH + 1];
+    char fname[MAX_FNAME_LENGTH];
+    char lname[MAX_LNAME_LENGTH];
+    printf("enter the name of the student you want to search in this format: <first name> <last name>\n");
+    fgets(name, sizeof(name), stdin);
+    if (name[strlen(name) - 1] == '\n') {
+        name[strlen(name) - 1] = '\0';
+    }
+    int numScanned = sscanf(name, "%s %s", fname, lname);
+
+    // Check if both first name and last name were successfully scanned
+    if (numScanned != 2) {
+        printf("Invalid input format. Please enter both the first name and last name.\n");
+        return Fail;
+    }
+    else
+    {
+        StudentNode* student2Serach = searchByName(fname, lname, &level, &sClass);
+        if (student2Serach)
+        {
+            printf("LEVEL: %d CLASS: %d ", level + 1, sClass + 1);
+            printStudent(student2Serach->student, stdout);
+        }
+        else
+        {
+            printf("no such student %s %s" ,fname, lname);
+            return Fail;
+        }
+
+    }
+
+}

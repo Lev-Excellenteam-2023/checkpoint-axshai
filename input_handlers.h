@@ -10,4 +10,5 @@ Student* parseLine(char* line, int* sClass, int* level);
 Status insertNewStudent();
 Status deleteStudent();
 Status editStudentGrade();
+Status searchStudent();
 #endif
