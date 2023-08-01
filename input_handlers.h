@@ -7,4 +7,5 @@
 #define MAX_LNAME_LENGTH 25
 typedef enum Status_E { Success , Fail} Status;
 Student* parseLine(char* line, int* sClass, int* level);
+Status insertNewStudent();
 #endif

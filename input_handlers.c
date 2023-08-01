@@ -60,3 +60,22 @@ Student* parseLine(char* line, int* sClass, int* level)
     }
     return newStudent;
 }
+
+Status insertNewStudent()
+{
+    char line[MAX_LINE_LENGTH];
+    Student* student;
+    int sClass, level;
+    printf("enter student deatails in this format: <first name> <last name> <phone> <level> <class> <10 grades seperated by space>\n");
+    fgets(line, MAX_LINE_LENGTH, stdin);
+    student = parseLine(line, &sClass, &level);
+    if (student != NULL)
+    {
+        add(level, sClass, student);
+        return Success;
+    }
+    else
+    {
+        return Fail;
+    }
+}
