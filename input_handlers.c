@@ -79,3 +79,30 @@ Status insertNewStudent()
         return Fail;
     }
 }
+
+Status deleteStudent()
+{
+    unsigned int phone;
+    BOOL isPrev;
+    printf("enter the phone of the student you want to delete\n");
+    scanf("%u", &phone);
+    StudentNode* student2Delete = search2DeleteByPhone(phone, &isPrev);
+    if (student2Delete)
+    {
+        if (!isPrev)
+            freeStudent(student2Delete, FALSE);
+        else
+        {
+            freeStudent(student2Delete->next, FALSE);
+            student2Delete->next = NULL;
+
+        }
+
+        return Success;
+    }
+    else
+    {
+        printf("there is no student with phone number: 0%u\n", phone);
+        return Fail;
+    }
+}
