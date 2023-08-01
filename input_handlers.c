@@ -211,7 +211,7 @@ Status printUnderperformedStudents()
     while (studentList != NULL) {
         StudentNode* student2delete = studentList;
         studentList = studentList->next;
-        freeStudent(student2delete);
+        free(student2delete);
 
     }
     return Success;

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define _CRT_SECURE_NO_WARNINGS
-#define MAX_LINE_LENGTH 100
+//#define MAX_LINE_LENGTH 100
 void menu();
 int main() {
     FILE* file = fopen("students_with_class.txt", "r");
